@@ -1,2 +1,2 @@
-# nginx_revproxy
-Nginx Reverse Proxy
+# nginx_proxy
+Nginx Container Proxy
