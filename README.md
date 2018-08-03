@@ -19,6 +19,13 @@ To run interactively:
 
     $ docker run -p 80:80 -it -v /var/run/docker.sock:/tmp/docker.sock:ro casmacc/nginx_proxy bash
 
+or against a running container:
+
+    $ # get list of container names
+    $ docker ps 
+    # # run bash on container
+    $ docker exec -it <container_name> bash
+
 ### Docker Compose
 
 See the file `compose/docker-compose.yml` for details...
