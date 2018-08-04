@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+
+require_relative "./base"
+
+hdr = "CONF CERT DOMAIN"
+
+puts hdr
+DOMS.each do |dom|
+  puts DomainPresenter.new(dom)
+end
+
