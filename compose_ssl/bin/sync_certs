@@ -1,0 +1,42 @@
+#!/usr/bin/env ruby
+
+class Array
+  def clean
+    self.select {|x| ! x.nil? && x != ""}.map {|x| x.strip}
+  end
+end
+
+def tgt(base, ext = nil)
+  [ext, base].clean.join(".")
+end
+
+def cmd(base, ext = nil)
+  "sudo certbot certonly --webroot -w /usr/share/nginx/html -d #{tgt(base, ext)} -n --agree-tos --email andy@r210.com"
+end
+
+def run(log, base, ext)
+  if File.exist?("/etc/letsencrypt/live/#{tgt(base, ext)}")
+    log.puts "Skipping #{tgt(base, ext)}"
+  else
+    log.puts "Building #{tgt(base, ext)}"
+    system cmd(base, ext) 
+  end
+end
+
+usage  = "Usage: #{$0.split("/").last} <domain> [<comma-separated subdomains>]"
+
+abort(usage)  if ARGV.length  == 0
+
+base       = ARGV[0]
+extensions = ARGV[1] || ""
+
+system("sudo rm -f /tmp/certbot")
+
+log = File.open("/tmp/certbot", "w")
+log.puts " BEG-GEN #{Time.now} ".center(80, '-')
+
+list = [""] + extensions.split(",").clean
+list.each { |el| run(log, base, el) }
+
+log.puts " END-GEN #{Time.now} ".center(80, '-')
+log.close
