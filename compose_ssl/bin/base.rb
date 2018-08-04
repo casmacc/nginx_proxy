@@ -16,7 +16,7 @@ class Domain
   attr_reader :dom
 
   def initialize(dom)
-    @dom = dom
+    @dom = `echo #{dom}`.chomp
   end
 
   def has_conf?
