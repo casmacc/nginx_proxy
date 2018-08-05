@@ -23,16 +23,16 @@ services:
     ports:
       - "3090:80"
     environment:
-      VIRTUAL_HOST: ${NHOST:=myhost.com}
+      VIRTUAL_HOST: ${NHOST}
   h1:
     image: casmacc/html_helloworld
     ports:
       - "3091:80"
     environment:
-      VIRTUAL_HOST: h1.${NHOST:=myhost.com}
+      VIRTUAL_HOST: h1.${NHOST}
   s1:
     image: casmacc/sinatra_helloworld
     ports:
       - "4090:3090"
     environment:
-      VIRTUAL_HOST: s1.${NHOST:=myhost.com}
+      VIRTUAL_HOST: s1.${NHOST}

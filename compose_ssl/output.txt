@@ -1,0 +1,1 @@
+sudo certbot certonly --webroot --webroot-path=volumes/html --dry-run --domains bugmark.plus,h1.bugmark.plus --agree-tos --email andy@r210.com
