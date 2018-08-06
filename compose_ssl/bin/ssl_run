@@ -1,0 +1,18 @@
+#!/usr/bin/env ruby
+
+require_relative "./Base"
+require_relative "./Certbot"
+
+
+cert_path = "#{VOLS}/certs"
+
+system("sudo rm -f #{cert_path}/*crt")
+system("sudo rm -f #{cert_path}/*key")
+
+DOMS.each do |dom|
+  puts dom.to_s.center(50, '.')
+  Certbot.new(dom).run
+  system("sudo cp /etc/letsencrypt/live/#{dom}/cert.pem #{cert_path}/#{dom}.crt")
+  system("sudo cp /etc/letsencrypt/live/#{dom}/privkey.pem #{cert_path}/#{dom}.key")
+end
+

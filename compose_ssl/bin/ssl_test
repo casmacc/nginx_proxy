@@ -1,0 +1,27 @@
+#!/usr/bin/env ruby
+
+require_relative "./Base"
+
+class Presenter
+  attr_reader :dom
+
+  def initialize(dom)
+    @dom = dom
+  end
+
+  def to_s
+    "#{ping} #{wget} #{html} #{dom}"
+  end
+
+  private 
+
+  def ping() dom.pingable? ? " ok " : " -- " end
+  def html() dom.htmlable? ? " ok " : " -- " end
+  def wget() dom.getable?  ? " ok " : " -- " end
+end
+
+puts "PING WGET HTML DOMAIN"
+
+DOMS.each do |dom|
+  puts Presenter.new(dom).to_s
+end

@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+if [ -z "$BASE_HOSTNAME" ]; then
+  [[ -f env ]] && source ./env && export BASE_HOSTNAME
+else
+    export BASE_HOSTNAME=myhost.com
+fi
+
+[[ -z "$BASE_HOSTNAME" ]] && echo "ERROR: BASE_HOSTNAME not defined" && exit 1
+
+echo "BASE_HOSTNAME is $BASE_HOSTNAME"
+
+export HTTPS_METHOD=noredirect
+
+# sudo rm -f volumes/conf.d/default.conf
+
+docker-compose up

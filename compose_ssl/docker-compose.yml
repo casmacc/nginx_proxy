@@ -15,6 +15,7 @@ services:
     volumes:
       - ./volumes/certs:/etc/nginx/certs
       - ./volumes/conf.d:/etc/nginx/conf.d
+      - ./volumes/vhost.d:/etc/nginx/vhost.d
       - /var/run/docker.sock:/tmp/docker.sock:ro
   base:
     image: casmacc/html_helloworld
@@ -23,16 +24,16 @@ services:
     ports:
       - "3090:80"
     environment:
-      VIRTUAL_HOST: myhost.com
+      VIRTUAL_HOST: ${BASE_HOSTNAME}
   h1:
     image: casmacc/html_helloworld
     ports:
       - "3091:80"
     environment:
-      VIRTUAL_HOST: h1.myhost.com
+      VIRTUAL_HOST: h1.${BASE_HOSTNAME}
   s1:
     image: casmacc/sinatra_helloworld
     ports:
       - "4090:3090"
     environment:
-      VIRTUAL_HOST: s1.myhost.com
+      VIRTUAL_HOST: s1.${BASE_HOSTNAME}
