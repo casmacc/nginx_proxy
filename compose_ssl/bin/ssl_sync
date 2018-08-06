@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
 
+require_relative "./Base"
+
 class Array
   def clean
     self.select {|x| ! x.nil? && x != ""}.map {|x| x.strip}
@@ -14,5 +16,4 @@ def run(hostname, email)
     system cmd(base, ext) 
 end
 
-require_relative "./Base"
 
