@@ -19,40 +19,40 @@ services:
     ports:
       - "3090:80"
     environment:
-      VIRTUAL_HOST: myhost.com
+      VIRTUAL_HOST: bugmark.plus
   h1:
     image: casmacc/html_helloworld
     ports:
       - "3091:80"
     environment:
-      VIRTUAL_HOST: h1.myhost.com
+      VIRTUAL_HOST: h1.bugmark.plus
   s1:
     image: casmacc/sinatra_helloworld
     ports:
       - "4090:3090"
     environment:
-      VIRTUAL_HOST: s1.myhost.com
+      VIRTUAL_HOST: s1.bugmark.plus
   s2:
     image: casmacc/sinatra_helloworld
     ports:
       - "4091:3090"
     environment:
-      VIRTUAL_HOST: s2.myhost.com
+      VIRTUAL_HOST: s2.bugmark.plus
   p1:
     image: casmacc/phoenix_helloworld
     ports:
       - "5000:4000"
     environment:
-      VIRTUAL_HOST: p1.myhost.com
+      VIRTUAL_HOST: p1.bugmark.plus
   p2:
     image: casmacc/phoenix_helloworld
     ports:
       - "5001:4000"
     environment:
-      VIRTUAL_HOST: p2.myhost.com
+      VIRTUAL_HOST: p2.bugmark.plus
   whoami:
     image: jwilder/whoami
     ports:
       - "8000:8000"
     environment:
-      VIRTUAL_HOST: whoami.myhost.com
+      VIRTUAL_HOST: whoami.bugmark.plus
