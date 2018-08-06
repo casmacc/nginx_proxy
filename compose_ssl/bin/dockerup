@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+[[ -z "$NHOST" ]] && export NHOST=myhost.com
+
+echo "NHOST is $NHOST"
+
+docker-compose up
