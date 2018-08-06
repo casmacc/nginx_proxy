@@ -10,8 +10,8 @@ fi
 
 echo "BASE_HOSTNAME is $BASE_HOSTNAME"
 
-# export HTTPS_METHOD=noredirect
+export HTTPS_METHOD=noredirect
 
-sudo rm -f volumes/conf.d/default.conf
+# sudo rm -f volumes/conf.d/default.conf
 
 docker-compose up
