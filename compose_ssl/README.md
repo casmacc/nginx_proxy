@@ -8,21 +8,28 @@ Then:
     $ sudo apt install certbot
     $ sudo apt install ruby
 
-Set or export the NHOST environment variable...
+Set or export system environment variables...
 
-    $ echo "NHOST=<yourhost>" > env
+    $ echo "BASE_HOSTNAME=<yourhost>" > env
+    $ echo "LE_EMAIL=<yourmail>" > env
 
 That should do it...
 
 ## Setting up SSL
 
-Make sure you wildcard DNS working.  Then:
+Make sure wildcard DNS working with your DNS registrar.  Then:
 
-    $ ./bin/dockerup
-    $ ./bin/ssl_setup
+    $ ./bin/dockerup     # start docker
+    $ ./bin/ssl_list     # list domains
+    $ ./bin/ssl_test     # test to see if the LetsEncrypt HTTP-auth process works
+    $ ./bin/ssl_dry_run  # test LetsEncrypt w/o generating certs
+    $ ./bin/ssl_gen      # generate LetsEncrypt certs
+    $ ./bin/ssl_copy     # copy certs to a working directory
+
+After the `ssl_copy` step, kill dockerup then restart.
 
 Then test https with a browser...
 
 ## Renew 
 
-sudo certbot certonly --webroot --webroot-path=volumes/html --domain h1.bugmark.plus --agree-tos --email andy@r210.com --noninteractive
+Renewal process TBD.

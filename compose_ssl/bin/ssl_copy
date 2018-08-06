@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+
+require_relative "./Base"
+
+DOMS.each do |dom|
+  puts dom.to_s.center(50, '.')
+  system("sudo cp /etc/letsencrypt/live/#{dom}/cert.pem    #{CERT_PATH}/#{dom}.crt")
+  system("sudo cp /etc/letsencrypt/live/#{dom}/privkey.pem #{CERT_PATH}/#{dom}.key")
+end
+

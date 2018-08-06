@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+
+require_relative "./Base"
+
+system("sudo rm -f #{CERT_PATH}/*crt")
+system("sudo rm -f #{CERT_PATH}/*key")
+

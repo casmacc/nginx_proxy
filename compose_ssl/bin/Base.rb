@@ -41,3 +41,5 @@ VOLS = BASE + "/volumes"
 DCOM = BASE + "/docker-compose.yml"
 YDAT = YAML::load_file(DCOM)
 DOMS = YDAT.deep_find("VIRTUAL_HOST").map {|el| Domain.new(el, HOST)}
+
+CERT_PATH = VOLS + "/certs"
