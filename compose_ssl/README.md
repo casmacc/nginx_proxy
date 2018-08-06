@@ -8,13 +8,17 @@ Then:
     $ sudo apt install certbot
     $ sudo apt install ruby
 
+Set or export the NHOST environment variable...
+
+    $ echo "NHOST=<yourhost>" > env
+
 That should do it...
 
 ## Setting up SSL
 
 Make sure you wildcard DNS working.  Then:
 
-    $ docker-compose up
+    $ ./bin/dockerup
     $ ./bin/ssl_setup
 
 Then test https with a browser...

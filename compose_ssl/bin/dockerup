@@ -1,7 +1,13 @@
 #!/usr/bin/env bash
 
-[[ -z "$NHOST" ]] && export NHOST=myhost.com
+if [ -z "$BASE_HOSTNAME" ]; then
+  [[ -f env ]] && source ./env && export BASE_HOSTNAME
+else
+    export BASE_HOSTNAME=myhost.com
+fi
 
-echo "NHOST is $NHOST"
+[[ -z "$BASE_HOSTNAME" ]] && echo "ERROR: BASE_HOSTNAME not defined" && exit 1
+
+echo "BASE_HOSTNAME is $BASE_HOSTNAME"
 
 docker-compose up
