@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+
+require_relative "./Base"
+require_relative "./Certbot"
+
+DOMS.each do |dom|
+  puts dom.to_s.center(50, '.')
+  Certbot.new(dom).dry_run
+end
+

@@ -13,7 +13,7 @@ class Domain
   end
 
   def getable?
-    system("wget #{dom} > /dev/null 2>&1")
+    system("wget #{dom} -O /dev/null > /dev/null 2>&1")
   end
 
   def htmlable?

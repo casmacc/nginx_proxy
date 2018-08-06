@@ -15,9 +15,9 @@ class Presenter
 
   private 
 
-  def ping() dom.pingable? ? " xx " : " -- " end
-  def html() dom.htmlable? ? " xx " : " -- " end
-  def wget() dom.getable?  ? " xx " : " -- " end
+  def ping() dom.pingable? ? " ok " : " -- " end
+  def html() dom.htmlable? ? " ok " : " -- " end
+  def wget() dom.getable?  ? " ok " : " -- " end
 end
 
 puts "PING WGET HTML DOMAIN"
