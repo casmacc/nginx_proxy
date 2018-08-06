@@ -13,6 +13,7 @@ services:
       - "80:80"
       - "443:443"
     volumes:
+      # - ./volumes/certs:/etc/nginx/certs
       - ./volumes/certs:/etc/nginx/certs
       - ./volumes/conf.d:/etc/nginx/conf.d
       - ./volumes/vhost.d:/etc/nginx/vhost.d

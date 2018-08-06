@@ -1,1 +1,4 @@
 compose_ssl/volumes/conf.d/default.conf
+compose_ssl/volumes/certs/*key
+compose_ssl/volumes/certs/*crt
+
