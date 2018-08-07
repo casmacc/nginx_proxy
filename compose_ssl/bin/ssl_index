@@ -10,6 +10,7 @@ require_relative './Base'
 Dotenv.load(env_file) if File.exist?(env_file)
 
 template = ERB.new <<~ERB
+  <h3><%= DOMS.first %> services</h3>
   <% if ENV["CONTACT_NAME"]  %><p>Contact Name:  <%= ENV["CONTACT_NAME"]  %></p><% end %>
   <% if ENV["CONTACT_EMAIL"] %><p>Contact Email: <%= ENV["CONTACT_EMAIL"] %></p><% end %>
   <% if ENV["CONTACT_PHONE"] %><p>Contact Phone: <%= ENV["CONTACT_PHONE"] %></p><% end %>

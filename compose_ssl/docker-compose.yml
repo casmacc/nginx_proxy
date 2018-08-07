@@ -14,7 +14,6 @@ services:
       - "443:443"
     restart: unless-stopped
     environment:
-      VIRTUAL_HOST: ${BASE_HOSTNAME}
       HTTPS_METHOD: noredirect
     volumes:
       - ./volumes/certs:/etc/nginx/certs
@@ -57,5 +56,4 @@ services:
     restart: unless-stopped
     env_file:
       - .env.slackin
-
 
