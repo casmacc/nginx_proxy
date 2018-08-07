@@ -32,4 +32,10 @@ Then test https with a browser...
 
 ## Renew 
 
-Renewal process TBD.
+Every week, run:
+
+    $ ./bin/ssl_renew
+    $ ./bin/ssl_copy
+    $ docker-compose restart
+
+Cron Process TBD...
