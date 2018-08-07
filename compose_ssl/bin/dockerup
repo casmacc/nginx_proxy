@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 if [ -z "$BASE_HOSTNAME" ]; then
-  [[ -f env ]] && source ./env && export BASE_HOSTNAME
+  [[ -f env ]] && source ./.env && export BASE_HOSTNAME
 else
     export BASE_HOSTNAME=myhost.com
 fi

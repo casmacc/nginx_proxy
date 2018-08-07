@@ -47,11 +47,15 @@ services:
     environment:
       VIRTUAL_HOST: s1.${BASE_HOSTNAME}
       HTTPS_METHOD: noredirect
-  s2:
-    image: casmacc/sinatra_helloworld
+  slackin:
+    image: casmacc/slackin
     ports:
-      - "4091:3090"
-    restart: unless-stopped
+      - "3015:3015"
     environment:
-      VIRTUAL_HOST: s2.${BASE_HOSTNAME}
+      VIRTUAL_HOST: slackin.${BASE_HOSTNAME}
       HTTPS_METHOD: noredirect
+    restart: unless-stopped
+    env_file:
+      - .env.slackin
+
+

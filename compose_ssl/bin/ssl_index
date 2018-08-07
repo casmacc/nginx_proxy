@@ -1,0 +1,25 @@
+#!/usr/bin/env ruby
+
+env_file = './.env.index'
+
+require 'erb'
+require 'dotenv'
+require_relative './Base'
+Dotenv.load(env_file) if File.exist?(env_file)
+
+template = ERB.new <<-ERB
+  <% if ENV["CONTACT_NAME"]  %><p>Contact Name:  <%= ENV["CONTACT_NAME"]  %></p><% end %>
+  <% if ENV["CONTACT_EMAIL"] %><p>Contact Email: <%= ENV["CONTACT_EMAIL"] %></p><% end %>
+  <% if ENV["CONTACT_PHONE"] %><p>Contact Phone: <%= ENV["CONTACT_PHONE"] %></p><% end %>
+  <ul>
+  <% DOMS.each do |dom| %>
+    <li>
+      <a href="http://<%= dom %>" target="_blank">
+        <%= dom %>
+      </a>
+    </li>
+  <% end %>
+  </ul>
+ERB
+
+puts template.result(binding)

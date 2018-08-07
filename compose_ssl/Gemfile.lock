@@ -2,6 +2,7 @@ GEM
   remote: https://rubygems.org/
   specs:
     chronic (0.10.2)
+    dotenv (2.5.0)
     whenever (0.10.0)
       chronic (>= 0.6.3)
 
@@ -9,6 +10,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  dotenv
   whenever
 
 BUNDLED WITH

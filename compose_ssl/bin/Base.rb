@@ -18,7 +18,7 @@ class Hash
 end
 
 def read_value(regex)
-  env_file = File.expand_path("../env", __dir__)
+  env_file = File.expand_path("../.env", __dir__)
   return nil unless File.exist?(env_file)
   File.readlines(env_file).map do |line|
     line.scan(regex) ? line.chomp.strip.split("=").last : nil
