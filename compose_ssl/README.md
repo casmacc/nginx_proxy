@@ -10,8 +10,8 @@ Then:
 
 Set or export system environment variables...
 
-    $ echo "BASE_HOSTNAME=<yourhost>" > env
-    $ echo "LE_EMAIL=<yourmail>" > env
+    $ echo "BASE_HOSTNAME=<yourhost>" > .env
+    $ echo "LE_EMAIL=<yourmail>"      > .env
 
 That should do it...
 
@@ -29,6 +29,14 @@ Make sure wildcard DNS working with your DNS registrar.  Then:
 After the `ssl_copy` step, kill dockerup then restart.
 
 Then test https with a browser...
+
+## Making an Index Page
+
+This is optional...
+
+    $ ./bin/ssl_index > volumes/html/index.html
+
+Then in your browser, visit `<yourhost>`.
 
 ## Renew 
 
