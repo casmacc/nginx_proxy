@@ -56,4 +56,14 @@ services:
     restart: unless-stopped
     env_file:
       - .env.slackin
+  leadcap1:
+    image: casmacc/lead_capture
+    ports:
+      - "4567:4567"
+    environment:
+      VIRTUAL_HOST: leadcap1.${BASE_HOSTNAME}
+      HTTPS_METHOD: noredirect
+    restart: unless-stopped
+    env_file:
+      - .env.leadcap1
 
