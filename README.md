@@ -28,9 +28,5 @@ or against a running container:
 
 ### Docker Compose
 
-See the file `compose/docker-compose.yml` for details...
+See the file `compose_basic` and `compose_ssl` directories for examples...
 
-To run it:
-
-    $ docker-compose up
-    
