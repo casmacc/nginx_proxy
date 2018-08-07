@@ -58,6 +58,8 @@ services:
       - .env.slackin
   leadcap1:
     image: casmacc/lead_capture
+    volumes:
+      - ./volumes/leadcap:/app/data
     ports:
       - "4567:4567"
     environment:

@@ -3,5 +3,6 @@ compose_ssl/volumes/html/index.html
 compose_ssl/volumes/conf.d/default.conf
 compose_ssl/volumes/certs/*key
 compose_ssl/volumes/certs/*crt
+compose_ssl/volumes/leadcap/*txt
 compose_ssl/.env*
 
