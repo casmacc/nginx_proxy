@@ -12,6 +12,7 @@ services:
     ports:
       - "80:80"
       - "443:443"
+    restart: unless-stopped
     environment:
       VIRTUAL_HOST: ${BASE_HOSTNAME}
       HTTPS_METHOD: noredirect
@@ -26,6 +27,7 @@ services:
       - ./volumes/html:/usr/share/nginx/html
     ports:
       - "3090:80"
+    restart: unless-stopped
     environment:
       VIRTUAL_HOST: ${BASE_HOSTNAME}
       HTTPS_METHOD: noredirect
@@ -33,6 +35,7 @@ services:
     image: casmacc/html_helloworld
     ports:
       - "3091:80"
+    restart: unless-stopped
     environment:
       VIRTUAL_HOST: h1.${BASE_HOSTNAME}
       HTTPS_METHOD: noredirect
@@ -40,6 +43,7 @@ services:
     image: casmacc/sinatra_helloworld
     ports:
       - "4090:3090"
+    restart: unless-stopped
     environment:
       VIRTUAL_HOST: s1.${BASE_HOSTNAME}
       HTTPS_METHOD: noredirect
@@ -47,6 +51,7 @@ services:
     image: casmacc/sinatra_helloworld
     ports:
       - "4091:3090"
+    restart: unless-stopped
     environment:
       VIRTUAL_HOST: s2.${BASE_HOSTNAME}
       HTTPS_METHOD: noredirect
