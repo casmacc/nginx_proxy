@@ -17,6 +17,9 @@ That should do it...
 
 ## Setting up SSL
 
+    NOTE for this to work your machine needs to be on the 
+    public internet!  It won't work behind the firewall! 
+
 Make sure wildcard DNS working with your DNS registrar.  Then:
 
     $ ./bin/dockerup     # start docker
