@@ -46,4 +46,6 @@ Every week, run:
     $ ./bin/ssl_copy
     $ docker-compose restart
 
-Cron Process TBD...
+## TBD
+
+Cron Process... 
