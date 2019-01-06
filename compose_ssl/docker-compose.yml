@@ -13,16 +13,13 @@ services:
       - "80:80"
       - "443:443"
     restart: unless-stopped
-    environment:
-      VIRTUAL_HOST: ${BASE_HOSTNAME}
-      HTTPS_METHOD: noredirect
     volumes:
       - ./volumes/certs:/etc/nginx/certs
       - ./volumes/conf.d:/etc/nginx/conf.d
       - ./volumes/vhost.d:/etc/nginx/vhost.d
       - /var/run/docker.sock:/tmp/docker.sock:ro
   base:
-    image: casmacc/html_helloworld
+    image: casmacc/nginx_html
     volumes:
       - ./volumes/html:/usr/share/nginx/html
     ports:

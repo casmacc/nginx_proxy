@@ -30,6 +30,11 @@ or against a running container:
 
 See the file `compose_basic` and `compose_ssl` directories for examples...
 
+## Rebuilding the Image
+
+    docker build . -t casmacc/nginx_proxy
+    docker push casmacc/nginx_proxy
+
 ## Proxy to a VM Guest
 
 You can proxy from the host to a web server running on a local virtual machine.
