@@ -17,15 +17,37 @@ class Domain
   end
 
   def htmlable?
-    base = "/.well-known/acme-challenge/test_file.html"
-    path = File.expand_path(VOLS + "/../volumes/html" + base)
     text = Time.now.to_s
-    File.open(path, "w") {|f| f.puts Time.now}
-    getable? && open("http://#{dom}#{base}").read.chomp == text
+
+    path = "/.well-known/acme-challenge"
+    file = "/test_#{dom.gsub('.','_')}.html"
+
+    lbase = File.expand_path(VOLS + "/html")
+    hbase = "http://#{dom}"
+
+    lpath = lbase + path
+    lfile = lbase + path + file
+    hfile = hbase + path + file
+
+    system "mkdir -p #{lpath}"
+
+    File.open(lfile, "w") {|f| f.puts(text)}
+
+    getable? && path_text(hfile) == text
   end
 
   def to_s
     dom
+  end
+
+  private
+
+  def path_text(url)
+    begin
+      open(url).read.chomp
+    rescue
+      "ERROR"
+    end
   end
 end
 

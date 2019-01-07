@@ -21,7 +21,7 @@ def read_value(regex)
   env_file = File.expand_path("../env", __dir__)
   return nil unless File.exist?(env_file)
   File.readlines(env_file).map do |line|
-    line.scan(regex) ? line.chomp.strip.split("=").last : nil
+    line.scan(regex).empty? ? nil : line.chomp.strip.split("=").last
   end.drop_while(&:nil?).first
 end
 
