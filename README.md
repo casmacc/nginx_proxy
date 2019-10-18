@@ -35,22 +35,18 @@ See the file `compose_basic` and `compose_ssl` directories for examples...
     docker build . -t casmacc/nginx_proxy
     docker push casmacc/nginx_proxy
 
-## Proxy to a VM Guest
+## Proxy to Service on Docker Host
 
-You can proxy from the host to a web server running on a local virtual machine.
+You can proxy from to a service on the host machine.  The service could be a
+process running directly on the host, or on a Virtual Machine that listens to a
+port on the host.
 
-First, start the VM and expose the web service on a specific port.
-
-Then start a [dummy container][1] and define `VIRTUAL_HOST` and `VIRTUAL_PORT`
-for your web service.
-
-    $ docker run -e VIRTUAL_HOST=sh3.myhost.com VIRTUAL_PORT=3095 cwempe/docker-dummy
-    $ docker run -e VIRTUAL_HOST=sh4.myhost.com VIRTUAL_PORT=3096 cwempe/docker-dummy
-
-The `VIRTUAL_PORT` is the port that is exposed by your virtual machine.
-
-Note: this will only work when the NGINX proxy and other docker containers run on the host.
-
-To proxy to another IP address, see the [Cwempe](https://github.com/CWempe/nginx-proxy) fork of `nginx-proxy`.
-
-[1]: https://hub.docker.com/r/cwempe/docker-dummy/
+    servicex:
+      image: qoomon/docker-host
+      restart: on-failure
+      cap_add: [ 'NET_ADMIN', 'NET_RAW' ]
+      expose:
+        - "5020"
+      environment:
+        VIRTUAL_HOST: servicex.casmacc.net
+        HTTPS_METHOD: noredirect
